@@ -1,0 +1,13 @@
+name: crystal_study_room
+version: 0.1.0
+
+authors:
+  - your-name-here <your-email-here>
+
+targets:
+  crystal_study_room:
+    main: src/crystal_study_room.cr
+
+crystal: 1.2.2
+
+license: MIT

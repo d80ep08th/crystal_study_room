@@ -1,0 +1,18 @@
+{
+  "bundler": "webpack",
+  "shimport": null,
+  "assets": {
+    "3D": "a4ed7b87af8ed35ab6e1/3D.3D.js",
+    "dope1": "a4ed7b87af8ed35ab6e1/dope1.dope1.js",
+    "index": "a4ed7b87af8ed35ab6e1/index.index.js",
+    "main": "a4ed7b87af8ed35ab6e1/main.js",
+    "vendors~3D~index": "a4ed7b87af8ed35ab6e1/vendors~3D~index.vendors~3D~index.js"
+  },
+  "css": {
+    "chunks": {
+      "index.svelte": [],
+      "dope1.svelte": [],
+      "3D.svelte": []
+    }
+  }
+}

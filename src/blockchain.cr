@@ -3,17 +3,31 @@ require "digest"
 module Blockchain
 
   class Block
-  
-    def initialize(data : String)
-      
+
+    property current_hash = String.new
+
+    def initialize(index = 0, data = "data", previous_hash = "hash")
       @data = data
-      
+      @index = index
+      @timestamp = Time.local
+      @previous_hash = previous_hash
+      @current_hash = hash_block
     end
 
-    def hash
-    
-    Digest::SHA256.hexdigest(@data)
-    
+    def self.first(index = 0, data="Genesis Block")
+      Block.new(index: index, data: data, previous_hash: "0")
+    end
+
+    def self.next(previous_node, data = " " )
+      Block.new(
+        index: previous_node.size,
+        data: "Transaction data number (#{previous_node.size})",
+        previous_hash: previous_node.hash.to_s
+      )
+    end
+
+    def hash_block
+      Digest::SHA256.hexdigest("#{@index}#{@timestamp}#{@data}#{@previous_hash}")
     end
 
   end
@@ -21,4 +35,14 @@ module Blockchain
 
 end
 
-puts Blockchain::Block.new("Hello World!").hash
+
+blockchain = [ Blockchain::Block.first ]
+previous_block = blockchain
+
+5.times do
+  new_block = Blockchain::Block.next(previous_block)
+  blockchain << new_block
+  previous_block = blockchain
+end
+
+p blockchain

@@ -4,7 +4,7 @@ require "./spec_helper"
 #it is used for defining a spec with the give tiitle in between double quotes
 #should is used for making assumptions about the spec
 
-describe CrystalStudyRoom do
+describe Blockchain do
 
   it "false work" do
     false.should eq(false)

@@ -1,5 +1,5 @@
 require "spec"
-require "../src/crystal_study_room"
+require "../src/blockchain"
 
 def div_by_three(n)
   

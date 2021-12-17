@@ -1,12 +1,12 @@
-name: crystal_study_room
+name: blockchain
 version: 0.1.0
 
 authors:
-  - your-name-here <your-email-here>
+  - d80ep08th <dodecoder@gmail.com>
 
 targets:
-  crystal_study_room:
-    main: src/crystal_study_room.cr
+  blockchain:
+    main: src/blockchain.cr
 
 crystal: 1.2.2
 

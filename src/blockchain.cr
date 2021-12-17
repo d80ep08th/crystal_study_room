@@ -11,12 +11,14 @@ module Blockchain
     end
 
     def hash
-
-    hash = Digest::SHA256
-
+    
+    Digest::SHA256.hexdigest(@data)
+    
     end
 
   end
 
 
 end
+
+puts Blockchain::Block.new("Hello World!").hash

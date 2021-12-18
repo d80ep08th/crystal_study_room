@@ -8,6 +8,12 @@ targets:
   blockchain:
     main: src/blockchain.cr
 
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+
+
+
 crystal: 1.2.2
 
 license: MIT

@@ -3,4 +3,4 @@
 >store its code to copy from and a working celestite app 
 >to render amber with the sexiness of svelte.js
 
->Also, tring to understand blockchain by writing one in crystal 😮‍💨
+>Also, trying to understand blockchain by writing one in crystal 😮‍💨

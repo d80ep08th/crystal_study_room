@@ -35,9 +35,13 @@ module Blockchain
       )
     end
 
-    def recalculate_hash
+    def recalculate_hash : String
       @nonce = proof_of_work
       @current_hash = calc_hash_with_nonce(@nonce)
+    end
+
+    def prev_hash : String
+      @previous_hash
     end
   end
 end

@@ -16,7 +16,7 @@ module Blockchain
 
       @chain = Blockchain::Block.new
       @uncommitted_transactions = Block::Transaction.new(from: "", to: "", amount: 0)
-      @nodes =  Set(Blockchain::Block).new [] of String
+      @nodes =  Set(String).new [] of String
     end
 
     def add_transaction(transaction)

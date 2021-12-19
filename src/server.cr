@@ -9,9 +9,12 @@ end
 
 blockchain = Blockchain::Blocked.new
 
-puts blockchain
 # Generate a globally unique address for this node
 node_identifier = UUID.random.to_s
+
+get "/" do
+  "Hello World!"
+end
 
 get "/chain" do
   { chain: blockchain.chain }.to_json
@@ -30,7 +33,7 @@ post "/transactions/new" do |env|
   transaction = Blockchain::Block::Transaction.new(
     from: env.params.json["from"].as(String),
     to:  env.params.json["to"].as(String),
-    amount:  env.params.json["amount"].as(Int32)
+    amount:  env.params.json["amount"].as(Int64)
   )
 
   blockchain.add_transaction(transaction)

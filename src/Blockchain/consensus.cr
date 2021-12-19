@@ -17,13 +17,15 @@ module Blockchain
     def resolve
       updated = false
 
+      j = 0
       @nodes.each do |node|
+        j = j + 1
         node_chain = parse_chain(node)
         return unless [node_chain].size > [@chain].size
         return unless valid_chain?(node_chain)
-        @chain = node_chain
+        @chain = node_chain[j]
         updated = true
-      rescue IO::Timeout
+      rescue IO::TimeoutError
         puts "Timeout!"
       end
 
@@ -41,15 +43,16 @@ module Blockchain
     private def valid_chain?(node_chain)
       previous_hash = "0"
       i = 0
-      [node_chain].each do |block|
+      node_chain.each do |block|
         i = i + 1
-        current_block_hash = block[i].current_hash
-        block[i].recalculate_hash
+        #current_block_hash = block.current_hash
+        #block.recalculate_hash
+        current_block_hash = block.recalculate_hash
 
         return false if current_block_hash != block.recalculate_hash # current_hash
-        return false if previous_hash != block.previous_hash
+        return false if previous_hash != block.prev_hash
         return false if current_block_hash[0..1] != "00"
-        previous_hash = block.current_hash
+        previous_hash = block.recalculate_hash
       end
 
       return true

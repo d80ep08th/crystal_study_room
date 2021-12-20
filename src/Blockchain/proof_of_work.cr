@@ -21,7 +21,7 @@ module Blockchain
       #sha256 = Digest::SHA256.new
       message = "#{nonce}#{@index}#{@timestamp}#{@transactions}#{@previous_hash}"
       #sha.update("#{nonce}#{@index}#{@timestamp}#{@transactions}#{@previous_hash}")
-      Digest::SHA256.hexdigest("(message)")
+      Digest::SHA256.hexdigest((message))
     end
   end
 end

@@ -29,24 +29,26 @@ module Blockchain
     end
 
     def self.next(previous_block, transactions = [] of Transaction)
+      b = 0
+      previous_block.each do
+        b = b + 1
+      end
+
       Block.new(
         transactions: transactions,
-        index: [previous_block].size + 1,
+        index:  b, #previous_block.size + 1,
         previous_hash: previous_block.to_s
       )
     end
 
-    def recalculate_hash : String
+    def recalculate_hash
       @nonce = proof_of_work
       @current_hash = calc_hash_with_nonce(@nonce)
+      @current_hash
     end
 
-    def prev_hash : String
-      @previous_hash
-    end
+
+
+
   end
 end
-
-
-blockchain = [ Blockchain::Block.first ]
-puts blockchain

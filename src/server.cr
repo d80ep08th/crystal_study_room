@@ -47,7 +47,8 @@ end
 
 post "/nodes/register" do |env|
   nodes = env.params.json["nodes"].as(Array)
-
+  nodes = nodes.to_set
+  p " Nodes #{nodes}, typeof #{typeof(nodes)} "
   raise "Empty array" if nodes.empty?
 
   nodes.each do |node|

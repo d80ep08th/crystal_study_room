@@ -21,8 +21,10 @@ get "/chain" do
 end
 
 get "/mine" do
+  p "Block before mining #{[blockchain.chain]} "
   blockchain.mine
-  "Block with index=#{[blockchain.chain].size} is mined."
+  p "Block with index=#{[blockchain.chain].size} is mined."
+  p "Block after mining #{[blockchain.chain]} "
 end
 
 get "/pendings" do
@@ -38,7 +40,9 @@ post "/transactions/new" do |env|
 
   blockchain.add_transaction(transaction)
 
-  "Transaction #{transaction} has been added to the node"
+  p "Blockchain #{blockchain.chain} ."
+  p "Transaction #{transaction} has been added to the node"
+  p "ADDED FROM #{transaction.from} , TO #{transaction.to} , Amount #{transaction.amount} "
 end
 
 post "/nodes/register" do |env|

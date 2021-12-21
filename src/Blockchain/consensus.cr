@@ -23,7 +23,8 @@ module Blockchain
         node_chain = parse_chain(node)
         return unless [node_chain].size > [@chain].size
         return unless valid_chain?(node_chain)
-        @chain = node_chain[j]
+        #@chain = node_chain[j]
+        @chain = node_chain
         updated = true
       rescue IO::TimeoutError
         puts "Timeout!"
@@ -35,15 +36,17 @@ module Blockchain
     private def parse_chain(node : String)
       node_url = URI.parse("#{node}/chain")
       node_chain = HTTP::Client.get(node_url)
+      #puts node_chain
       node_chain = JSON.parse(node_chain.body)["chain"].to_json
+      #puts node_chain
+      Blockchain::Block.from_json(node_chain)
 
-      Array(Blockchain::Block).from_json(node_chain)
     end
 
     private def valid_chain?(node_chain)
       previous_hash = "0"
       i = 0
-      node_chain.each do |block|
+      [node_chain].each do |block|
         i = i + 1
         #current_block_hash = block.current_hash
         #block.recalculate_hash

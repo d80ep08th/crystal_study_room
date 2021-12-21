@@ -33,16 +33,16 @@ module Blockchain
       )
     end
 
-    #def hash_block
-    #  Digest::SHA256.hexdigest("#{@index}#{@timestamp}#{@data}#{@previous_hash}")
-    #end
+    def hash_block
+      Digest::SHA256.hexdigest("#{@index}#{@timestamp}#{@data}#{@previous_hash}")
+    end
 
   end
 
 
 end
 
-
+bchain = Blockchain::Block.first
 blockchain = [ Blockchain::Block.first ]
 previous_block = blockchain
 
@@ -52,4 +52,4 @@ previous_block = blockchain
   previous_block = blockchain
 end
 
-p blockchain
+p typeof(bchain)

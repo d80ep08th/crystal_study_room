@@ -10,12 +10,13 @@ module Blockchain
     @current_hash = String.new
     @nonce = Int32.new "0"
     @previous_hash = String.new
-    @transactions = Array(Transaction).new
+    #@transactions = Array(Transaction).new
+    @transactions = Int32.new "0"#typeof(Transaction)
     @timestamp = Time.local
 
 
     def initialize(index = 0, transactions = [] of Transaction, previous_hash = "hash")
-      @transactions = transactions
+      @transactions =  0 #transactions
       @index = index
       @timestamp = Time.utc
       @previous_hash = previous_hash
